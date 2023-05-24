@@ -3,6 +3,7 @@ package com.example.finalapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +23,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initComponents() {
+        /* Setting up front-end header */
+        TextView textViewTitle = findViewById(R.id.textViewTitle);
+        TextView textViewTitle2 = findViewById(R.id.textViewTitle2);
+        Typeface chocolateFont = Typeface.createFromAsset(getAssets(), "TT Chocolates Trial Bold.otf");
+        textViewTitle.setTypeface(chocolateFont);
+        textViewTitle2.setTypeface(chocolateFont);
+
         buttonSearchProfile = findViewById(R.id.buttonSearchProfile);
         buttonEloLeaderboard = findViewById(R.id.buttonEloLeaderboard);
         buttonRankedLeaderboard = findViewById(R.id.buttonRankedLeaderboard);

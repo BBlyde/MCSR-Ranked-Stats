@@ -7,19 +7,58 @@
     tools:context=".RankedLeaderboard">
 
     <Button
-        android:id="@+id/buttonBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="568dp"
-        android:text="Retour"
+        android:id="@+id/buttonBackRanked"
+        android:layout_width="250dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="624dp"
+        android:backgroundTint="#84cc34"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/back"
+        android:textSize="18dp"
+        app:cornerRadius="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewTitle5"
+        android:layout_width="276dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="84dp"
+        android:text="Ranked Statistics"
+        android:textSize="32sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="125dp"
+        android:layout_height="142dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/icon_x256" />
+
+    <TextView
+        android:id="@+id/textViewTitle6"
+        android:layout_width="266dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="56dp"
+        android:text="Minecraft Speedrun"
+        android:textSize="28sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/rankedLeaderboard"
-        android:layout_width="410dp"
-        android:layout_height="495dp"
+        android:layout_width="194dp"
+        android:layout_height="235dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="316dp"
         android:text="Loading.."
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

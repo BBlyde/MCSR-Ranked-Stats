@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">FinalApp</string>
     <string name="textview">TextView</string>
-    <string name="elo_leaderboard">Elo Leaderboard</string>
+    <string name="search_profile">SEARCH PROFILE</string>
+    <string name="elo_leaderboard">ELO LEADERBOARD</string>
+    <string name="ranked_leaderboard">RANKED LEADERBOARD</string>
+    <string name="back">BACK</string>
 </resources>

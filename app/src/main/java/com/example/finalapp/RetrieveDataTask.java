@@ -26,7 +26,7 @@ public class RetrieveDataTask extends AsyncTask<String, Void, String>{
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
 
-            // Lecture de la réponse de l'API
+            // Read API response
             InputStream inputStream = connection.getInputStream();
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
             StringBuilder stringBuilder = new StringBuilder();
@@ -35,26 +35,21 @@ public class RetrieveDataTask extends AsyncTask<String, Void, String>{
                 stringBuilder.append(line);
             }
             reader.close();
-
-            // Fermeture de la connexion
             connection.disconnect();
 
             return stringBuilder.toString();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return null;
     }
 
     @Override
     protected void onPostExecute(String jsonData) {
         if (jsonData != null) {
-            // Vous pouvez maintenant traiter les données JSON
-            // Par exemple, vous pouvez les analyser avec la classe JSONObject
             try {
                 JSONObject jsonObject = new JSONObject(jsonData);
-                // Traitez les données JSON ici...
+                /* Data Treatment */
                 textViewData.setText(jsonData);
 
 
