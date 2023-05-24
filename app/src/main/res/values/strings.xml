@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">FinalApp</string>
+    <string name="textview">TextView</string>
+    <string name="elo_leaderboard">Elo Leaderboard</string>
+</resources>
