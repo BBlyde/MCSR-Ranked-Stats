@@ -53,24 +53,41 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/eloLeaderboard"
-        android:layout_width="308dp"
-        android:layout_height="26dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="688dp"
-        android:text="Loading.."
+    <ScrollView
+        android:layout_width="306dp"
+        android:layout_height="389dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="188dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/textVolley"
-        android:layout_width="162dp"
-        android:layout_height="165dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="252dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <TextView
+            android:id="@+id/textVolley"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!--<ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="-7dp"
+        tools:layout_editor_absoluteY="122dp">
+
+        <TextView
+            android:id="@+id/textVolley"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="180dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </ScrollView>-->
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -28,9 +28,9 @@ public class RankedLeaderboard extends AppCompatActivity {
         textViewTitle.setTypeface(chocolateFont);
         textViewTitle2.setTypeface(chocolateFont);
 
-        labelLeaderboard = findViewById(R.id.rankedLeaderboard);
+        /*labelLeaderboard = findViewById(R.id.rankedLeaderboard);
         String url = "https://mcsrranked.com/api/record-leaderboard";
-        new RetrieveDataTask(labelLeaderboard).execute(url);
+        new RetrieveDataTask(labelLeaderboard).execute(url);*/
 
         buttonBack = findViewById(R.id.buttonBackRanked);
         buttonBack.setOnClickListener(new View.OnClickListener() {

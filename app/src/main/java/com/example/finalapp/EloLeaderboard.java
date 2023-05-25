@@ -16,6 +16,8 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class EloLeaderboard extends AppCompatActivity {
@@ -58,13 +60,34 @@ public class EloLeaderboard extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        // Display the first 500 characters of the response string.
-                        textView.setText(response.substring(0,500));
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            JSONObject dataObject = jsonObject.getJSONObject("data");
+
+                            JSONArray usersArray = dataObject.getJSONArray("users");
+                            StringBuilder stringBuilder = new StringBuilder();
+
+                            for (int i = 0; i < usersArray.length(); i++) {
+                                JSONObject userObject = usersArray.getJSONObject(i);
+                                int rank = userObject.getInt("elo_rank");
+                                String nickname = userObject.getString("nickname");
+                                int elo = userObject.getInt("elo_rate");
+
+                                stringBuilder.append("Nickname : ").append(nickname)
+                                        .append(" rank : ").append(rank)
+                                        .append(" elo : ").append(elo).append("\n");
+                            }
+                            textView.setText(stringBuilder.toString());
+
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                textView.setText("That didn't work!");
+                String test = "e";
+                textView.setText(test);
             }
         });
 
