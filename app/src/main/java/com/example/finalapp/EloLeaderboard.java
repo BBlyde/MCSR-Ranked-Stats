@@ -46,10 +46,10 @@ public class EloLeaderboard extends AppCompatActivity {
             }
         });
 
-        getLeaderboard();
+        getEloLeaderboard();
     }
 
-    private void getLeaderboard(){
+    private void getEloLeaderboard(){
         final TextView textView = (TextView) findViewById(R.id.textVolley);
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -86,8 +86,8 @@ public class EloLeaderboard extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                String test = "e";
-                textView.setText(test);
+                String errorResponse = "Request Error";
+                textView.setText(errorResponse);
             }
         });
 

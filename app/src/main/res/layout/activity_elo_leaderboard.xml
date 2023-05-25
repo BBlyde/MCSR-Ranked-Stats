@@ -73,21 +73,4 @@
 
     </ScrollView>
 
-    <!--<ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="-7dp"
-        tools:layout_editor_absoluteY="122dp">
-
-        <TextView
-            android:id="@+id/textVolley"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="180dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </ScrollView>-->
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
