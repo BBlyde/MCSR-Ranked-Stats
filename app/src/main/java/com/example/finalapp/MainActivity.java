@@ -58,56 +58,71 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.buttonSearchProfile) {
+        // Disable the button while the api is called to avoid multiple request
+        buttonSearchProfile.setEnabled(false);
+        if(view.getId() == R.id.buttonSearchProfile) {
+            // Retrieve the username parsed in the editView
             String username = ((EditText) findViewById(R.id.editTextUsername)).getText().toString();
 
-            // Instantiate the RequestQueue.
-            RequestQueue queue = Volley.newRequestQueue(this);
+            /* Start the request */
             String url = "https://mcsrranked.com/api/users/" + username;
+            startRequest(url);
+        } else if(view.getId() == R.id.buttonEloLeaderboard){
+            String url = "https://mcsrranked.com/api/leaderboard";
+            startRequest(url);
+        } else if(view.getId() == R.id.buttonRankedLeaderboard){
+            /*String url = "https://mcsrranked.com/api/users/";
+            startRequest(url);*/
+        }
+    }
 
-            buttonSearchProfile.setEnabled(false);
+    private void startRequest(String url){
+        // Instantiate the RequestQueue.
+        RequestQueue queue = Volley.newRequestQueue(this);
+        Context context = this;
 
-            Context context = this;
+        // Request a string response from the provided URL.
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            /* Create and retrieve what's inside the response using a jsonObject*/
+                            JSONObject jsonObject = new JSONObject(response);
+                            JSONObject dataObject = jsonObject.getJSONObject("data");
 
-            // Request a string response from the provided URL.
-            StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                    new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-                            try {
-                                /* Create and retrieve what's inside the response using a jsonObject*/
-                                JSONObject jsonObject = new JSONObject(response);
-                                JSONObject dataObject = jsonObject.getJSONObject("data");
-
+                            if(url == "https://mcsrranked.com/api/leaderboard"){
+                                Intent intent = new Intent(context, EloLeaderboard.class);
+                                intent.putExtra("data", dataObject.toString());
+                                buttonSearchProfile.setEnabled(true);
+                                startActivity(intent);
+                            } else {
                                 Intent intent = new Intent(context, UserProfil.class);
                                 intent.putExtra("data", dataObject.toString());
                                 buttonSearchProfile.setEnabled(true);
                                 startActivity(intent);
-                            } catch (JSONException e) {
-                                buttonSearchProfile.setEnabled(true);
-                                error("Server error");
                             }
+
+
+                        } catch (JSONException e) {
+                            buttonSearchProfile.setEnabled(true);
+                            printError("Server error");
                         }
-                    }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    buttonSearchProfile.setEnabled(true);
-                    String errorResponse = "Unregistered MCSR account";
-                    error(errorResponse);
-                }
-            });
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                buttonSearchProfile.setEnabled(true);
+                String errorResponse = "Unregistered MCSR account";
+                printError(errorResponse);
+            }
+        });
 
-            // Add the request to the RequestQueue.
-            queue.add(stringRequest);
-
-        } else if(view.getId() == R.id.buttonEloLeaderboard){
-            startActivity(new Intent(this, EloLeaderboard.class));
-        } else if(view.getId() == R.id.buttonRankedLeaderboard){
-            startActivity(new Intent(this, RankedLeaderboard.class));
-        }
+        // Add the request to the RequestQueue.
+        queue.add(stringRequest);
     }
 
-    private void error(String errorT){
+    private void printError(String errorT){
         Toast t = new Toast(this);
         t.setText(errorT);
         t.show();

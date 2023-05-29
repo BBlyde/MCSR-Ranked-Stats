@@ -37,6 +37,9 @@ public class EloLeaderboard extends AppCompatActivity {
         textViewTitle.setTypeface(chocolateFont);
         textViewTitle2.setTypeface(chocolateFont);
 
+        // Retrieve the username from the Main Activity's editText
+        String data = getIntent().getStringExtra("data");
+
         /* Return button */
         Button buttonBack = findViewById(R.id.buttonBackElo);
         buttonBack.setOnClickListener(new View.OnClickListener() {
@@ -46,52 +49,31 @@ public class EloLeaderboard extends AppCompatActivity {
             }
         });
 
-        getEloLeaderboard();
+        getEloLeaderboard(data);
     }
 
-    private void getEloLeaderboard(){
+    private void getEloLeaderboard(String data) {
         final TextView textView = (TextView) findViewById(R.id.textVolley);
-        // Instantiate the RequestQueue.
-        RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "https://mcsrranked.com/api/leaderboard";
 
-        // Request a string response from the provided URL.
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            JSONObject dataObject = jsonObject.getJSONObject("data");
+        try {
+            JSONObject dataObject = new JSONObject(data);
 
-                            JSONArray usersArray = dataObject.getJSONArray("users");
-                            StringBuilder stringBuilder = new StringBuilder();
+            JSONArray usersArray = dataObject.getJSONArray("users");
+            StringBuilder stringBuilder = new StringBuilder();
 
-                            for (int i = 0; i < usersArray.length(); i++) {
-                                JSONObject userObject = usersArray.getJSONObject(i);
-                                int rank = userObject.getInt("elo_rank");
-                                String nickname = userObject.getString("nickname");
-                                int elo = userObject.getInt("elo_rate");
+            for (int i = 0; i < usersArray.length(); i++) {
+                JSONObject userObject = usersArray.getJSONObject(i);
+                int rank = userObject.getInt("elo_rank");
+                String nickname = userObject.getString("nickname");
+                int elo = userObject.getInt("elo_rate");
 
-                                stringBuilder.append("Nickname : ").append(nickname)
-                                        .append(" rank : ").append(rank)
-                                        .append(" elo : ").append(elo).append("\n");
-                            }
-                            textView.setText(stringBuilder.toString());
-
-                        } catch (JSONException e) {
-                            throw new RuntimeException(e);
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                String errorResponse = "Request Error";
-                textView.setText(errorResponse);
+                stringBuilder.append(nickname)
+                        .append(" rank : ").append(rank)
+                        .append(" elo : ").append(elo).append("\n");
             }
-        });
-
-        // Add the request to the RequestQueue.
-        queue.add(stringRequest);
+            textView.setText(stringBuilder.toString());
+        } catch (Exception e){
+            throw new RuntimeException();
+        }
     }
 }

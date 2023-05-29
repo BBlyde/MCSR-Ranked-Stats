@@ -79,8 +79,6 @@ public class UserProfil extends AppCompatActivity {
 
         LinearLayout containerLayout = findViewById(R.id.containerLayout);
 
-
-
         /* String const for social media */
         String discord = "discord";
         String twitch = "twitch";
