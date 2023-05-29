@@ -58,21 +58,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        // Disable the button while the api is called to avoid multiple request
-        buttonSearchProfile.setEnabled(false);
         if(view.getId() == R.id.buttonSearchProfile) {
             // Retrieve the username parsed in the editView
             String username = ((EditText) findViewById(R.id.editTextUsername)).getText().toString();
-
-            /* Start the request */
             String url = "https://mcsrranked.com/api/users/" + username;
+            // Disable the button while the api is called to avoid multiple request
+            buttonSearchProfile.setEnabled(false);
             startRequest(url);
         } else if(view.getId() == R.id.buttonEloLeaderboard){
             String url = "https://mcsrranked.com/api/leaderboard";
             startRequest(url);
         } else if(view.getId() == R.id.buttonRankedLeaderboard){
-            /*String url = "https://mcsrranked.com/api/users/";
-            startRequest(url);*/
+            String url = "https://mcsrranked.com/api/record-leaderboard";
+            startRequest(url);
         }
     }
 
@@ -89,21 +87,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         try {
                             /* Create and retrieve what's inside the response using a jsonObject*/
                             JSONObject jsonObject = new JSONObject(response);
-                            JSONObject dataObject = jsonObject.getJSONObject("data");
-
-                            if(url == "https://mcsrranked.com/api/leaderboard"){
-                                Intent intent = new Intent(context, EloLeaderboard.class);
-                                intent.putExtra("data", dataObject.toString());
-                                buttonSearchProfile.setEnabled(true);
-                                startActivity(intent);
+                            Intent intent;
+                            if(url.equals("https://mcsrranked.com/api/leaderboard")){
+                                intent = new Intent(context, EloLeaderboard.class);
+                            } else if (url.equals("https://mcsrranked.com/api/record-leaderboard")) {
+                                intent = new Intent(context, RankedLeaderboard.class);
                             } else {
-                                Intent intent = new Intent(context, UserProfil.class);
-                                intent.putExtra("data", dataObject.toString());
-                                buttonSearchProfile.setEnabled(true);
-                                startActivity(intent);
+                                intent = new Intent(context, UserProfil.class);
                             }
-
-
+                            intent.putExtra("response", response);
+                            buttonSearchProfile.setEnabled(true);
+                            startActivity(intent);
                         } catch (JSONException e) {
                             buttonSearchProfile.setEnabled(true);
                             printError("Server error");

@@ -44,7 +44,7 @@ public class UserProfil extends AppCompatActivity {
         textViewTitle2.setTypeface(chocolateFont);
 
         // Retrieve the username from the Main Activity's editText
-        String data = getIntent().getStringExtra("data");
+        String response = getIntent().getStringExtra("response");
 
         /* Setting-up the back button */
         Button buttonBack = findViewById(R.id.buttonBackUser);
@@ -55,10 +55,10 @@ public class UserProfil extends AppCompatActivity {
             }
         });
 
-        getUserStats(data);
+        getUserStats(response);
     }
 
-    private void getUserStats(String data){
+    private void getUserStats(String response){
         /* Initializing all the views and layouts */
         final TextView textViewUserNickname = (TextView) findViewById(R.id.textViewUserNickname);
         final TextView textViewUserElo = (TextView) findViewById(R.id.textViewUserElo);
@@ -85,7 +85,8 @@ public class UserProfil extends AppCompatActivity {
         String youtube = "youtube";
 
         try {
-            JSONObject dataObject = new JSONObject(data);
+            JSONObject responseObject = new JSONObject(response);
+            JSONObject dataObject = responseObject.getJSONObject("data");
 
             String username = dataObject.getString("nickname");
 

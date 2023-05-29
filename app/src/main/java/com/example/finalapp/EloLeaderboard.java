@@ -38,7 +38,7 @@ public class EloLeaderboard extends AppCompatActivity {
         textViewTitle2.setTypeface(chocolateFont);
 
         // Retrieve the username from the Main Activity's editText
-        String data = getIntent().getStringExtra("data");
+        String response = getIntent().getStringExtra("response");
 
         /* Return button */
         Button buttonBack = findViewById(R.id.buttonBackElo);
@@ -49,14 +49,15 @@ public class EloLeaderboard extends AppCompatActivity {
             }
         });
 
-        getEloLeaderboard(data);
+        getEloLeaderboard(response);
     }
 
-    private void getEloLeaderboard(String data) {
+    private void getEloLeaderboard(String response) {
         final TextView textView = (TextView) findViewById(R.id.textVolley);
 
         try {
-            JSONObject dataObject = new JSONObject(data);
+            JSONObject responseObject = new JSONObject(response);
+            JSONObject dataObject = responseObject.getJSONObject("data");
 
             JSONArray usersArray = dataObject.getJSONArray("users");
             StringBuilder stringBuilder = new StringBuilder();
