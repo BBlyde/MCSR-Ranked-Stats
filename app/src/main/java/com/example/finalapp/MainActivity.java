@@ -2,13 +2,28 @@ package com.example.finalapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.format.DateUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -43,15 +58,58 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        if(view.getId() == R.id.buttonSearchProfile){
-            String username = ((EditText)findViewById(R.id.editTextUsername)).getText().toString();
-            Intent intent = new Intent(this, UserProfil.class);
-            intent.putExtra("username", username);
-            startActivity(intent);
+        if (view.getId() == R.id.buttonSearchProfile) {
+            String username = ((EditText) findViewById(R.id.editTextUsername)).getText().toString();
+
+            // Instantiate the RequestQueue.
+            RequestQueue queue = Volley.newRequestQueue(this);
+            String url = "https://mcsrranked.com/api/users/" + username;
+
+            buttonSearchProfile.setEnabled(false);
+
+            Context context = this;
+
+            // Request a string response from the provided URL.
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                /* Create and retrieve what's inside the response using a jsonObject*/
+                                JSONObject jsonObject = new JSONObject(response);
+                                JSONObject dataObject = jsonObject.getJSONObject("data");
+
+                                Intent intent = new Intent(context, UserProfil.class);
+                                intent.putExtra("data", dataObject.toString());
+                                buttonSearchProfile.setEnabled(true);
+                                startActivity(intent);
+                            } catch (JSONException e) {
+                                buttonSearchProfile.setEnabled(true);
+                                error("Server error");
+                            }
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    buttonSearchProfile.setEnabled(true);
+                    String errorResponse = "Unregistered MCSR account";
+                    error(errorResponse);
+                }
+            });
+
+            // Add the request to the RequestQueue.
+            queue.add(stringRequest);
+
         } else if(view.getId() == R.id.buttonEloLeaderboard){
             startActivity(new Intent(this, EloLeaderboard.class));
         } else if(view.getId() == R.id.buttonRankedLeaderboard){
             startActivity(new Intent(this, RankedLeaderboard.class));
         }
+    }
+
+    private void error(String errorT){
+        Toast t = new Toast(this);
+        t.setText(errorT);
+        t.show();
     }
 }
