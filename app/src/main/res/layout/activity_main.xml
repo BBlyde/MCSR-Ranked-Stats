@@ -7,63 +7,6 @@
     android:background="#f9f9f9"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/buttonSearchProfile"
-        android:layout_width="250dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="308dp"
-        android:backgroundTint="#84cc34"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/search_profile"
-        android:textSize="18dp"
-        app:cornerRadius="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/buttonRankedLeaderboard"
-        android:layout_width="250dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="460dp"
-        android:backgroundTint="#84cc34"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/ranked_leaderboard"
-        android:textSize="18dp"
-        app:cornerRadius="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
-
-    <EditText
-        android:id="@+id/editTextUsername"
-        android:layout_width="250dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="260dp"
-        android:ems="10"
-        android:gravity="center_vertical|center_horizontal"
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/buttonEloLeaderboard"
-        android:layout_width="250dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="400dp"
-        android:backgroundTint="#84cc34"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/elo_leaderboard"
-        android:textSize="18dp"
-        app:cornerRadius="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="125dp"
@@ -75,25 +18,121 @@
         app:srcCompat="@drawable/icon_x256" />
 
     <TextView
-        android:id="@+id/textViewTitle2"
-        android:layout_width="276dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="84dp"
-        android:text="Ranked Statistics"
-        android:textSize="32sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/textViewTitle"
         android:layout_width="266dp"
         android:layout_height="43dp"
         android:layout_marginStart="128dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="58dp"
         android:text="Minecraft Speedrun"
         android:textSize="28sp"
+        android:textColor="#142c34"
+        android:fontFamily="@font/tt_chocolates_trial_bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewTitle2"
+        android:layout_width="276dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="86dp"
+        android:text="Ranked Statistics"
+        android:textSize="32sp"
+        android:textColor="#142c34"
+        android:fontFamily="@font/tt_chocolates_trial_bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonSearchProfile"
+        android:layout_width="250dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="308dp"
+        android:backgroundTint="#84cc34"
+        android:fontFamily="@font/tt_chocolates_trial_bold"
+        android:text="@string/search_profile"
+        android:textSize="18sp"
+        app:cornerRadius="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/buttonRankedLeaderboard"
+        android:layout_width="250dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="464dp"
+        android:backgroundTint="#84cc34"
+        android:fontFamily="@font/tt_chocolates_trial_bold"
+        android:text="@string/ranked_leaderboard"
+        android:textSize="18sp"
+        app:cornerRadius="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/editTextUsername"
+        android:layout_width="250dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="260dp"
+        android:ems="10"
+        android:gravity="center_vertical|center_horizontal"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonEloLeaderboard"
+        android:layout_width="250dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="400dp"
+        android:backgroundTint="#84cc34"
+        android:fontFamily="@font/tt_chocolates_trial_bold"
+        android:text="@string/elo_leaderboard"
+        android:textSize="18sp"
+        app:cornerRadius="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <LinearLayout
+        android:layout_width="250dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="600dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textViewMainWebSite"
+            android:layout_width="47dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Website"
+            android:textColor="#142c34"
+            android:fontFamily="@font/tt_chocolates_trial_bold"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/textViewMainAbout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="About"
+            android:textColor="#142c34"
+            android:fontFamily="@font/tt_chocolates_trial_bold"
+            android:textSize="18sp"/>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -30,9 +30,6 @@ public class RankedLeaderboard extends AppCompatActivity {
     private void initComponents() {
         TextView textViewTitle = findViewById(R.id.textViewTitle5);
         TextView textViewTitle2 = findViewById(R.id.textViewTitle6);
-        Typeface chocolateFont = Typeface.createFromAsset(getAssets(), "TT Chocolates Trial Bold.otf");
-        textViewTitle.setTypeface(chocolateFont);
-        textViewTitle2.setTypeface(chocolateFont);
 
         // Retrieve the username from the Main Activity's editText
         String response = getIntent().getStringExtra("response");

@@ -43,34 +43,47 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         /* Setting up front-end header and main buttons*/
         TextView textViewTitle = findViewById(R.id.textViewTitle);
         TextView textViewTitle2 = findViewById(R.id.textViewTitle2);
-        Typeface chocolateFont = Typeface.createFromAsset(getAssets(), "TT Chocolates Trial Bold.otf");
-        textViewTitle.setTypeface(chocolateFont);
-        textViewTitle2.setTypeface(chocolateFont);
 
         buttonSearchProfile = findViewById(R.id.buttonSearchProfile);
         buttonEloLeaderboard = findViewById(R.id.buttonEloLeaderboard);
         buttonRankedLeaderboard = findViewById(R.id.buttonRankedLeaderboard);
 
+        TextView textViewMainWebSite = findViewById(R.id.textViewMainWebSite);
+        TextView textViewMainAbout = findViewById(R.id.textViewMainAbout);
+
         buttonSearchProfile.setOnClickListener(this);
         buttonEloLeaderboard.setOnClickListener(this);
         buttonRankedLeaderboard.setOnClickListener(this);
+        textViewMainWebSite.setOnClickListener(this);
+        textViewMainAbout.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         if(view.getId() == R.id.buttonSearchProfile) {
+            // Disable the button while the api is called to avoid multiple request
+            buttonSearchProfile.setEnabled(false);
             // Retrieve the username parsed in the editView
             String username = ((EditText) findViewById(R.id.editTextUsername)).getText().toString();
             String url = "https://mcsrranked.com/api/users/" + username;
-            // Disable the button while the api is called to avoid multiple request
-            buttonSearchProfile.setEnabled(false);
             startRequest(url);
         } else if(view.getId() == R.id.buttonEloLeaderboard){
+            // Disable the button while the api is called to avoid multiple request
+            buttonEloLeaderboard.setEnabled(false);
             String url = "https://mcsrranked.com/api/leaderboard";
             startRequest(url);
         } else if(view.getId() == R.id.buttonRankedLeaderboard){
+            // Disable the button while the api is called to avoid multiple request
+            buttonRankedLeaderboard.setEnabled(false);
             String url = "https://mcsrranked.com/api/record-leaderboard";
             startRequest(url);
+        } else if (view.getId() == R.id.textViewMainWebSite) {
+            String url = "https://mcsrranked.com/";
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(url));
+            startActivity(intent);
+        } else if (view.getId() == R.id.textViewMainAbout) {
+            startActivity(new Intent(this, About.class));
         }
     }
 
@@ -93,20 +106,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             } else if (url.equals("https://mcsrranked.com/api/record-leaderboard")) {
                                 intent = new Intent(context, RankedLeaderboard.class);
                             } else {
-                                intent = new Intent(context, UserProfil.class);
+                                intent = new Intent(context, UserProfile.class);
                             }
                             intent.putExtra("response", response);
-                            buttonSearchProfile.setEnabled(true);
+                            activateButton();
                             startActivity(intent);
                         } catch (JSONException e) {
-                            buttonSearchProfile.setEnabled(true);
+                            activateButton();
                             printError("Server error");
                         }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                buttonSearchProfile.setEnabled(true);
+                activateButton();
                 String errorResponse = "Unregistered MCSR account";
                 printError(errorResponse);
             }
@@ -114,6 +127,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // Add the request to the RequestQueue.
         queue.add(stringRequest);
+    }
+
+    private void activateButton(){
+        buttonSearchProfile.setEnabled(true);
+        buttonEloLeaderboard.setEnabled(true);
+        buttonRankedLeaderboard.setEnabled(true);
     }
 
     private void printError(String errorT){

@@ -14,34 +14,24 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.squareup.picasso.Picasso;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.concurrent.TimeUnit;
 
-public class UserProfil extends AppCompatActivity {
+public class UserProfile extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_profil);
+        setContentView(R.layout.activity_user_profile);
         initComponents();
     }
 
     private void initComponents() {
         TextView textViewTitle = findViewById(R.id.textViewTitle7);
         TextView textViewTitle2 = findViewById(R.id.textViewTitle8);
-        Typeface chocolateFont = Typeface.createFromAsset(getAssets(), "TT Chocolates Trial Bold.otf");
-        textViewTitle.setTypeface(chocolateFont);
-        textViewTitle2.setTypeface(chocolateFont);
 
         // Retrieve the username from the Main Activity's editText
         String response = getIntent().getStringExtra("response");
@@ -116,6 +106,7 @@ public class UserProfil extends AppCompatActivity {
 
             /* Setting-up the social media imageViews if linked */
             JSONObject connectionObject = dataObject.getJSONObject("connections");
+
             if(!connectionObject.isNull(youtube)) {
                 JSONObject youtubeObject = connectionObject.getJSONObject(youtube);
                 String youtubeId = youtubeObject.getString("id");
@@ -123,7 +114,7 @@ public class UserProfil extends AppCompatActivity {
                 imageViewYoutubeLogo.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        String url = "https://www.youtube.com/channel/" + youtubeId; // Replace with your desired web link
+                        String url = "https://www.youtube.com/channel/" + youtubeId;
                         Intent intent = new Intent(Intent.ACTION_VIEW);
                         intent.setData(Uri.parse(url));
                         startActivity(intent);
@@ -137,7 +128,7 @@ public class UserProfil extends AppCompatActivity {
                 imageViewTwitchLogo.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        String url = "https://www.twitch.tv/" + twitchName; // Replace with your desired web link
+                        String url = "https://www.twitch.tv/" + twitchName;
                         Intent intent = new Intent(Intent.ACTION_VIEW);
                         intent.setData(Uri.parse(url));
                         startActivity(intent);
@@ -152,7 +143,7 @@ public class UserProfil extends AppCompatActivity {
                 imageViewDiscordLogo.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        TextView textView = new TextView(UserProfil.this);
+                        TextView textView = new TextView(UserProfile.this);
                         textView.setText(discordName);
                         textView.setTextSize(16);
                         textView.setTextColor(Color.BLACK);
@@ -214,5 +205,4 @@ public class UserProfil extends AppCompatActivity {
 
         return String.format("%02d:%02d.%02d", minutes, seconds, millis);
     }
-
 }

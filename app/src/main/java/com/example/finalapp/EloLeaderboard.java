@@ -33,9 +33,6 @@ public class EloLeaderboard extends AppCompatActivity {
         /* Setting up front-end header */
         TextView textViewTitle = findViewById(R.id.textViewTitle3);
         TextView textViewTitle2 = findViewById(R.id.textViewTitle4);
-        Typeface chocolateFont = Typeface.createFromAsset(getAssets(), "TT Chocolates Trial Bold.otf");
-        textViewTitle.setTypeface(chocolateFont);
-        textViewTitle2.setTypeface(chocolateFont);
 
         // Retrieve the username from the Main Activity's editText
         String response = getIntent().getStringExtra("response");
