@@ -4,11 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.format.DateUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,15 +19,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Button buttonSearchProfile;
     private Button buttonEloLeaderboard;
     private Button buttonRankedLeaderboard;
-    private EditText editTextUsername;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +34,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initComponents() {
         /* Setting up front-end header and main buttons*/
-        TextView textViewTitle = findViewById(R.id.textViewTitle);
-        TextView textViewTitle2 = findViewById(R.id.textViewTitle2);
 
         buttonSearchProfile = findViewById(R.id.buttonSearchProfile);
         buttonEloLeaderboard = findViewById(R.id.buttonEloLeaderboard);
@@ -98,8 +89,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onResponse(String response) {
                         try {
-                            /* Create and retrieve what's inside the response using a jsonObject*/
-                            JSONObject jsonObject = new JSONObject(response);
                             Intent intent;
                             if(url.equals("https://mcsrranked.com/api/leaderboard")){
                                 intent = new Intent(context, EloLeaderboard.class);
@@ -111,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             intent.putExtra("response", response);
                             activateButton();
                             startActivity(intent);
-                        } catch (JSONException e) {
+                        } catch (Exception e) {
                             activateButton();
                             printError("Server error");
                         }

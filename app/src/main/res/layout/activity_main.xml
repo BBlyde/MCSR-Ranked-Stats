@@ -1,138 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f9f9f9"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="125dp"
-        android:layout_height="142dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/icon_x256" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/textViewTitle"
-        android:layout_width="266dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="58dp"
-        android:text="Minecraft Speedrun"
-        android:textSize="28sp"
-        android:textColor="#142c34"
-        android:fontFamily="@font/tt_chocolates_trial_bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="125dp"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/ranked_logo"
+            app:srcCompat="@drawable/icon_x192" />
 
-    <TextView
-        android:id="@+id/textViewTitle2"
-        android:layout_width="276dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="86dp"
-        android:text="Ranked Statistics"
-        android:textSize="32sp"
-        android:textColor="#142c34"
-        android:fontFamily="@font/tt_chocolates_trial_bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="167dp"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/buttonSearchProfile"
-        android:layout_width="250dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="308dp"
-        android:backgroundTint="#84cc34"
-        android:fontFamily="@font/tt_chocolates_trial_bold"
-        android:text="@string/search_profile"
-        android:textSize="18sp"
-        app:cornerRadius="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+            <TextView
+                android:id="@+id/textViewTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="41dp"
+                android:fontFamily="@font/quicksand_bold"
+                android:text="@string/minecraft_speedrun"
+                android:textColor="#142c34"
+                android:textSize="26sp" />
 
-    <Button
-        android:id="@+id/buttonRankedLeaderboard"
-        android:layout_width="250dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="464dp"
-        android:backgroundTint="#84cc34"
-        android:fontFamily="@font/tt_chocolates_trial_bold"
-        android:text="@string/ranked_leaderboard"
-        android:textSize="18sp"
-        app:cornerRadius="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+            <TextView
+                android:id="@+id/textViewTitle2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:fontFamily="@font/quicksand_bold"
+                android:text="@string/ranked_statistics"
+                android:textColor="#142c34"
+                android:textSize="30sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <EditText
         android:id="@+id/editTextUsername"
-        android:layout_width="250dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="260dp"
-        android:ems="10"
-        android:gravity="center_vertical|center_horizontal"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:gravity="center"
         android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:autofillHints="blyde_"
+        tools:ignore="LabelFor" />
+
+    <Button
+        android:id="@+id/buttonSearchProfile"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:backgroundTint="#84cc34"
+        android:fontFamily="@font/quicksand_bold"
+        android:text="@string/search_profile"
+        android:textSize="18sp"
+        app:cornerRadius="0dp" />
 
     <Button
         android:id="@+id/buttonEloLeaderboard"
-        android:layout_width="250dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="400dp"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
         android:backgroundTint="#84cc34"
-        android:fontFamily="@font/tt_chocolates_trial_bold"
+        android:fontFamily="@font/quicksand_bold"
         android:text="@string/elo_leaderboard"
         android:textSize="18sp"
-        app:cornerRadius="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        app:cornerRadius="0dp" />
+
+    <Button
+        android:id="@+id/buttonRankedLeaderboard"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#84cc34"
+        android:fontFamily="@font/quicksand_bold"
+        android:text="@string/ranked_leaderboard"
+        android:textSize="18sp"
+        app:cornerRadius="0dp" />
 
     <LinearLayout
-        android:layout_width="250dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="600dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:layout_gravity="center"
         android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:orientation="horizontal" >
 
         <TextView
             android:id="@+id/textViewMainWebSite"
-            android:layout_width="47dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/quicksand_bold"
             android:gravity="center"
-            android:text="Website"
-            android:textColor="#142c34"
-            android:fontFamily="@font/tt_chocolates_trial_bold"
-            android:textSize="18sp"/>
+            android:text="@string/website"
+            android:textColor="#1F6A6A"
+            android:textSize="18sp"
+            android:paddingEnd="20dp"
+            tools:ignore="RtlSymmetry" />
 
         <TextView
             android:id="@+id/textViewMainAbout"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="About"
-            android:textColor="#142c34"
-            android:fontFamily="@font/tt_chocolates_trial_bold"
-            android:textSize="18sp"/>
+            android:text="@string/about"
+            android:textColor="#1F6A6A"
+            android:fontFamily="@font/quicksand_bold"
+            android:textSize="18sp"
+            android:paddingStart="20dp"
+            tools:ignore="RtlSymmetry" />
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/textViewUnofficial"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
+        android:fontFamily="@font/quicksand_bold"
+        android:gravity="center"
+        android:text="@string/footer"
+        android:textColor="#142c34"
+        android:textSize="12sp"
+        tools:ignore="RtlSymmetry" />
+
+</LinearLayout>

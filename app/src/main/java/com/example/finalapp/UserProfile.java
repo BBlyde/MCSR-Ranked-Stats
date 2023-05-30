@@ -2,12 +2,14 @@ package com.example.finalapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.format.DateUtils;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -30,9 +32,6 @@ public class UserProfile extends AppCompatActivity {
     }
 
     private void initComponents() {
-        TextView textViewTitle = findViewById(R.id.textViewTitle7);
-        TextView textViewTitle2 = findViewById(R.id.textViewTitle8);
-
         // Retrieve the username from the Main Activity's editText
         String response = getIntent().getStringExtra("response");
 
@@ -102,7 +101,6 @@ public class UserProfile extends AppCompatActivity {
             JSONObject recordObject = dataObject.getJSONObject("records");
             JSONObject seasonObject = recordObject.getJSONObject("2");
             int win = seasonObject.getInt("win");
-            int draw = seasonObject.getInt("draw");
 
             /* Setting-up the social media imageViews if linked */
             JSONObject connectionObject = dataObject.getJSONObject("connections");
@@ -145,8 +143,13 @@ public class UserProfile extends AppCompatActivity {
                     public void onClick(View v) {
                         TextView textView = new TextView(UserProfile.this);
                         textView.setText(discordName);
-                        textView.setTextSize(16);
-                        textView.setTextColor(Color.BLACK);
+                        textView.setTextSize(18);
+                        String hexColor = "#142C34";
+                        int customColor = Color.parseColor(hexColor);
+                        textView.setTextColor(customColor);
+                        Typeface typeface = Typeface.createFromAsset(getAssets(), "quicksand_semibold.ttf");
+                        textView.setTypeface(typeface);
+                        textView.setGravity(Gravity.CENTER);
                         containerLayout.addView(textView);
                         imageViewDiscordLogo.setEnabled(false);
                     }
@@ -155,11 +158,10 @@ public class UserProfile extends AppCompatActivity {
 
             /* Attributing each properties to each view */
             textViewUserNickname.setText(username);
-            String string_elo_rate = "[" + elo_rate + "]";
 
+            String string_elo_rate = " [" + elo_rate + "]";
             textViewUserElo.setText(string_elo_rate);
-            String string_elo_rank = "#" + elo_rank;
-
+            String string_elo_rank = " #" + elo_rank;
             textViewUserPlace.setText(string_elo_rank);
 
             CharSequence relativeTime = DateUtils.getRelativeTimeSpanString(latest_time * 1000L, System.currentTimeMillis(), DateUtils.MINUTE_IN_MILLIS);
@@ -188,6 +190,7 @@ public class UserProfile extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("DefaultLocale")
     private String convertTimeHours(int timeMS){
         long hours = TimeUnit.MILLISECONDS.toHours(timeMS);
         long minutes = TimeUnit.MILLISECONDS.toMinutes(timeMS) % 60;
@@ -197,8 +200,8 @@ public class UserProfile extends AppCompatActivity {
         return String.format("%02d:%02d:%02d.%02d", hours, minutes, seconds, millis);
     }
 
+    @SuppressLint("DefaultLocale")
     private String convertTime(int timeMS){
-        long hours = TimeUnit.MILLISECONDS.toHours(timeMS);
         long minutes = TimeUnit.MILLISECONDS.toMinutes(timeMS) % 60;
         long seconds = TimeUnit.MILLISECONDS.toSeconds(timeMS) % 60;
         long millis = TimeUnit.MILLISECONDS.toMillis(timeMS) % 1000;

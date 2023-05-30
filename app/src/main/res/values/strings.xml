@@ -1,8 +1,31 @@
 <resources>
-    <string name="app_name">FinalApp</string>
+    <string name="app_name">MCSR Ranked Statistics</string>
     <string name="textview">TextView</string>
+    <string name="minecraft_speedrun">Minecraft Speedrun</string>
+    <string name="ranked_statistics">Ranked Statistics</string>
     <string name="search_profile">SEARCH PROFILE</string>
     <string name="elo_leaderboard">ELO LEADERBOARD</string>
     <string name="ranked_leaderboard">RANKED LEADERBOARD</string>
     <string name="back">BACK</string>
+    <string name="skin_head">Skin head</string>
+    <string name="ranked_logo">Ranked Logo</string>
+    <string name="website">Website</string>
+    <string name="about">About</string>
+    <string name="footer">Unofficial MCSR Ranked App</string>
+    <string name="place">Place</string>
+    <string name="player">Player</string>
+    <string name="elo">Elo</string>
+    <string name="time">Time</string>
+    <string name="ranked_statistics_user">Ranked Statistics</string>
+    <string name="played_matches_total_season">Played Matches (Total/Season) :</string>
+    <string name="last_online">Last online :</string>
+    <string name="winrate_season">Winrate (Season) :</string>
+    <string name="personnal_best_record">Personnal Best Record :</string>
+    <string name="winstreak_best_current">Winstreak (Best/Current) :</string>
+    <string name="elo_best_previous_season">Elo (Best/Previous Season) :</string>
+    <string name="youtube_logo">Youtube Logo</string>
+    <string name="twitch_logo">Twitch Logo</string>
+    <string name="discord_logo">Discord Logo</string>
+    <string name="xxxx">xxxx</string>
+    <string name="slash">/</string>
 </resources>

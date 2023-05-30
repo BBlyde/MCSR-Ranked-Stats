@@ -4,57 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f9f9f9"
     tools:context=".About">
 
-    <Button
-        android:id="@+id/buttonBackAbout"
-        android:layout_width="250dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="624dp"
-        android:backgroundTint="#84cc34"
-        android:fontFamily="@font/tt_chocolates_trial_bold"
-        android:text="@string/back"
-        android:textSize="18sp"
-        app:cornerRadius="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="125dp"
-        android:layout_height="142dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/icon_x256" />
-
-    <TextView
-        android:id="@+id/textViewTitle9"
-        android:layout_width="266dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="58dp"
-        android:text="Minecraft Speedrun"
-        android:textSize="28sp"
-        android:textColor="#142c34"
-        android:fontFamily="@font/tt_chocolates_trial_bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textViewTitle10"
-        android:layout_width="276dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="86dp"
-        android:text="Ranked Statistics"
-        android:textSize="32sp"
-        android:textColor="#142c34"
-        android:fontFamily="@font/tt_chocolates_trial_bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
