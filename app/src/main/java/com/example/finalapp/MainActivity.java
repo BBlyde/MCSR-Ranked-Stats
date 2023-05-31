@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -25,6 +27,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button buttonEloLeaderboard;
     private Button buttonRankedLeaderboard;
 
+    private final static String SHARED_PREFERENCES_PREFIX = "MainActivitySharedPrefix";
+    private final static String SHARED_PREFERENCES_KEY_USERNAME = "username";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,8 +38,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initComponents() {
-        /* Setting up front-end header and main buttons*/
-
         buttonSearchProfile = findViewById(R.id.buttonSearchProfile);
         buttonEloLeaderboard = findViewById(R.id.buttonEloLeaderboard);
         buttonRankedLeaderboard = findViewById(R.id.buttonRankedLeaderboard);
@@ -47,6 +50,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonRankedLeaderboard.setOnClickListener(this);
         textViewMainWebSite.setOnClickListener(this);
         textViewMainAbout.setOnClickListener(this);
+
+        /* Code to store last research */
+        EditText inputEdit = findViewById(R.id.editTextUsername);
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFERENCES_PREFIX, Context.MODE_PRIVATE);
+        String username = sharedPreferences.getString(SHARED_PREFERENCES_KEY_USERNAME, "");
+        inputEdit.setText(username);
     }
 
     @Override
@@ -54,17 +63,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(view.getId() == R.id.buttonSearchProfile) {
             // Disable the button while the api is called to avoid multiple request
             buttonSearchProfile.setEnabled(false);
-            // Retrieve the username parsed in the editView
-            String username = ((EditText) findViewById(R.id.editTextUsername)).getText().toString();
+            // Retrieve the username parsed in the editView and start the request with the corresponding url
+            String username = ((AutoCompleteTextView) findViewById(R.id.editTextUsername)).getText().toString();
+
+            /* Code to store last research */
+            SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFERENCES_PREFIX, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString(SHARED_PREFERENCES_KEY_USERNAME, username);
+            editor.apply();
+
             String url = "https://mcsrranked.com/api/users/" + username;
             startRequest(url);
         } else if(view.getId() == R.id.buttonEloLeaderboard){
-            // Disable the button while the api is called to avoid multiple request
             buttonEloLeaderboard.setEnabled(false);
             String url = "https://mcsrranked.com/api/leaderboard";
             startRequest(url);
         } else if(view.getId() == R.id.buttonRankedLeaderboard){
-            // Disable the button while the api is called to avoid multiple request
             buttonRankedLeaderboard.setEnabled(false);
             String url = "https://mcsrranked.com/api/record-leaderboard";
             startRequest(url);
