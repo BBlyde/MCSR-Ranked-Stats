@@ -51,54 +51,63 @@
 
     </LinearLayout>
 
-    <AutoCompleteTextView
-        android:id="@+id/editTextUsername"
-        android:layout_width="260dp"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="100dp"
-        android:gravity="center"
-        android:inputType="text"
-        android:autofillHints="username"
-        tools:ignore="LabelFor" />
+        android:orientation="vertical"
+        android:gravity="center">
 
-    <Button
-        android:id="@+id/buttonSearchProfile"
-        android:layout_width="260dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:backgroundTint="#84cc34"
-        android:fontFamily="@font/quicksand_bold"
-        android:text="@string/search_profile"
-        android:textSize="18sp"
-        app:cornerRadius="0dp" />
+        <AutoCompleteTextView
+            android:id="@+id/editTextUsername"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="100dp"
+            android:gravity="center"
+            android:inputType="text"
+            android:autofillHints="username"
+            tools:ignore="LabelFor" />
 
-    <Button
-        android:id="@+id/buttonEloLeaderboard"
-        android:layout_width="260dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:layout_marginTop="30dp"
-        android:backgroundTint="#84cc34"
-        android:fontFamily="@font/quicksand_bold"
-        android:text="@string/elo_leaderboard"
-        android:textSize="18sp"
-        app:cornerRadius="0dp" />
+        <Button
+            android:id="@+id/buttonSearchProfile"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:backgroundTint="#84cc34"
+            android:fontFamily="@font/quicksand_bold"
+            android:text="@string/search_profile"
+            android:textSize="18sp"
+            app:cornerRadius="0dp" />
 
-    <Button
-        android:id="@+id/buttonRankedLeaderboard"
-        android:layout_width="260dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="#84cc34"
-        android:fontFamily="@font/quicksand_bold"
-        android:text="@string/ranked_leaderboard"
-        android:textSize="18sp"
-        app:cornerRadius="0dp" />
+        <Button
+            android:id="@+id/buttonEloLeaderboard"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="#84cc34"
+            android:fontFamily="@font/quicksand_bold"
+            android:text="@string/elo_leaderboard"
+            android:textSize="18sp"
+            app:cornerRadius="0dp" />
+
+        <Button
+            android:id="@+id/buttonRankedLeaderboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#84cc34"
+            android:fontFamily="@font/quicksand_bold"
+            android:text="@string/ranked_leaderboard"
+            android:textSize="18sp"
+            app:cornerRadius="0dp" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"

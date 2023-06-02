@@ -52,7 +52,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="360dp"
+        android:layout_width="340dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_gravity="center"
@@ -60,7 +60,7 @@
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="90dp"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/quicksand_semibold"
@@ -72,7 +72,7 @@
 
         <TextView
             android:id="@+id/textView3"
-            android:layout_width="180dp"
+            android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/quicksand_semibold"
@@ -84,7 +84,7 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="90dp"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/quicksand_semibold"
@@ -98,19 +98,19 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="360dp"
+        android:layout_width="340dp"
         android:layout_height="440dp"
         android:layout_gravity="center">
 
         <LinearLayout
-            android:layout_width="360dp"
+            android:layout_width="340dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:paddingTop="10dp">
 
             <TextView
                 android:id="@+id/textViewLeaderboardPlace"
-                android:layout_width="90dp"
+                android:layout_width="70dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -118,7 +118,7 @@
 
             <TextView
                 android:id="@+id/textViewLeaderboardPlayer"
-                android:layout_width="180dp"
+                android:layout_width="240dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -126,7 +126,7 @@
 
             <TextView
                 android:id="@+id/textViewLeaderboardElo"
-                android:layout_width="90dp"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"

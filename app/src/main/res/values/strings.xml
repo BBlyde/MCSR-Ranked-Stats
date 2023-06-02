@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MCSR Ranked Statistics</string>
+    <string name="app_name">MCSR Stats</string>
     <string name="textview">TextView</string>
     <string name="minecraft_speedrun">Minecraft Speedrun</string>
     <string name="ranked_statistics">Ranked Statistics</string>
@@ -28,4 +28,6 @@
     <string name="discord_logo">Discord Logo</string>
     <string name="xxxx">xxxx</string>
     <string name="slash">/</string>
+    <string name="aboutText1">Minecraft Speedrun Ranked Statistics is an unaffiliated Android application that can be used to retrieve data about the original Ranked Minecraft mod made by Oliver and Redlime.</string>
+    <string name="aboutText2">I have made this application to complete a school project, so remember that I am still a student learning about programming. If you find any bugs using this app or have some suggestions for improvement, please contact me on Discord : Blyde#1877</string>
 </resources>
